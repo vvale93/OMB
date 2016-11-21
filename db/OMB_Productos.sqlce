@@ -1,0 +1,114 @@
+--	drop table Categorias
+
+create table Categorias
+(
+	ID_Categoria		uniqueidentifier	not null, --	rowguidcol,		--	cuando tratamos con EF, rowguidcol es IGNORADO...
+	Nombre				nvarchar(30)		not null,
+	Descripcion			nvarchar(300),
+	Cantidad			int,
+	Categoria_Up		uniqueidentifier,
+	--
+	--	constraints
+	constraint PK_Categorias primary key (ID_Categoria),
+	constraint FK_Categorias_Categorias foreign key (Categoria_Up) references Categorias (ID_Categoria) 
+)
+
+insert into Categorias values (default, 'Libros', null, null, null)
+
+select * from Categorias where Categoria_Up is not null
+
+delete from Categorias where Parent_CategoriaID is not null
+
+
+create table Editoriales
+(
+	ID_Editorial					uniqueidentifier			not null,
+	Nombre							nvarchar(150)				not null,
+	Domicilio						nvarchar(150),
+	AmpliacionDomicilio				nvarchar(150),
+	CodigoPostal					nvarchar(20),
+	ID_Localidad					int,
+	--
+	--	constraints
+	--
+	constraint PK_Editoriales primary key (ID_Editorial),
+	constraint FK_Editoriales_Localidades foreign key (ID_Localidad) references Localidades (ID_Localidad)
+)
+
+select * from Editoriales
+
+/*
+
+	DatosEnvio por ahora vamos a incluir alguna informacion como tamaño y peso del item
+	
+*/
+create table Libros
+(
+	ID_Libro					uniqueidentifier			not null,
+	ISBN						nchar(13)					not null,
+	ISBN10						nchar(10)					not null,
+	Titulo						nvarchar(150),				
+	Subtitulo					nvarchar(150),
+	FechaPublicacion			datetime,
+	Paginas						int,
+	DatosEnvio					nvarchar(300),
+	Portada						image,
+	ID_Editorial				uniqueidentifier			not null,
+	--
+	--	constraints
+	--
+	constraint PK_Libros primary key (ID_Libro),
+	constraint FK_Libros_Editoriales foreign key (ID_Editorial) references Editoriales (ID_Editorial),
+	constraint UK_ISBN unique (ISBN),
+	constraint UK_ISBN10 unique (ISBN10)
+)
+
+select * from Libros
+
+
+/*
+	Consulta con easter-loading para obtener una categoria CON TODAS sus SubCategorias
+	Observar el WHERE con 'Libros' que hay 
+*/
+SELECT 
+    [Project2].[C1] AS [C1], 
+    [Project2].[ID_Categoria] AS [ID_Categoria], 
+    [Project2].[Nombre] AS [Nombre], 
+    [Project2].[Descripcion] AS [Descripcion], 
+    [Project2].[Cantidad] AS [Cantidad], 
+    [Project2].[Categoria_Up] AS [Categoria_Up], 
+    [Project2].[C2] AS [C2], 
+    [Project2].[ID_Categoria1] AS [ID_Categoria1], 
+    [Project2].[Nombre1] AS [Nombre1], 
+    [Project2].[Descripcion1] AS [Descripcion1], 
+    [Project2].[Cantidad1] AS [Cantidad1], 
+    [Project2].[Categoria_Up1] AS [Categoria_Up1]
+    FROM ( SELECT 
+        [Limit1].[ID_Categoria] AS [ID_Categoria], 
+        [Limit1].[Nombre] AS [Nombre], 
+        [Limit1].[Descripcion] AS [Descripcion], 
+        [Limit1].[Cantidad] AS [Cantidad], 
+        [Limit1].[Categoria_Up] AS [Categoria_Up], 
+        [Limit1].[C1] AS [C1], 
+        [Extent2].[ID_Categoria] AS [ID_Categoria1], 
+        [Extent2].[Nombre] AS [Nombre1], 
+        [Extent2].[Descripcion] AS [Descripcion1], 
+        [Extent2].[Cantidad] AS [Cantidad1], 
+        [Extent2].[Categoria_Up] AS [Categoria_Up1], 
+        CASE WHEN ([Extent2].[ID_Categoria] IS NULL) THEN CAST(NULL AS int) ELSE 1 END AS [C2]
+        FROM   
+        (
+	        SELECT TOP (1) 
+	            [Extent1].[ID_Categoria] AS [ID_Categoria], 
+	            [Extent1].[Nombre] AS [Nombre], 
+	            [Extent1].[Descripcion] AS [Descripcion], 
+	            [Extent1].[Cantidad] AS [Cantidad], 
+	            [Extent1].[Categoria_Up] AS [Categoria_Up], 
+	            1 AS [C1]
+	            FROM [Categorias] AS [Extent1]
+	            WHERE N'Libros' = [Extent1].[Nombre] 
+        ) AS [Limit1]
+        LEFT JOIN [Categorias] AS [Extent2] ON [Limit1].[ID_Categoria] = [Extent2].[Categoria_Up]
+    )  AS [Project2]
+    ORDER BY [Project2].[ID_Categoria] ASC, [Project2].[C2] ASC
+    

@@ -1,0 +1,219 @@
+=== 1 ====
+The C++ Standard Library: A Tutorial and Reference (2nd Edition) 2nd Edition
+by Nicolai M. Josuttis (Author) 
+Hardcover: 1128 pages
+Publisher: Addison-Wesley Professional; 2 edition (April 9, 2012)
+Language: English
+ISBN-10: 0321623215
+ISBN-13: 978-0321623218
+Product Dimensions: 7.5 x 1.6 x 9.2 inches
+Shipping Weight: 3.7 pounds (View shipping rates and policies)
+
+=== 2 ====
+Introduction to Algorithms, 3rd Edition (MIT Press) 3rd Edition
+by Thomas H. Cormen (Author), Charles E. Leiserson (Author), Ronald L. Rivest (Author), Clifford Stein (Author) 
+Series: MIT Press
+Hardcover: 1312 pages
+Publisher: The MIT Press; 3rd edition (July 31, 2009)
+Language: English
+ISBN-10: 0262033844
+ISBN-13: 978-0262033848
+Product Dimensions: 8 x 1.8 x 9 inches
+Shipping Weight: 4.7 pounds (View shipping rates and policies)
+
+=== 3 ====
+Algorithms in a Nutshell: A Practical Guide 2nd Edition
+by George T. Heineman (Author), Gary Pollice (Author), Stanley Selkow (Author) 
+Series: In a Nutshell
+Paperback: 390 pages
+Publisher: O'Reilly Media; 2 edition (April 2, 2016)
+Language: English
+ISBN-10: 1491948922
+ISBN-13: 978-1491948927
+Product Dimensions: 5.9 x 0.8 x 8.9 inches
+Shipping Weight: 1.1 pounds (View shipping rates and policies)
+
+=== 4 ====
+The Hitchhiker's Guide to Python: Best Practices for Development 1st Edition
+by Kenneth Reitz (Author), Tanya Schlusser (Author) 
+Paperback: 338 pages
+Publisher: O'Reilly Media; 1 edition (September 18, 2016)
+Language: English
+ISBN-10: 1491933178
+ISBN-13: 978-1491933176
+Product Dimensions: 7 x 0.7 x 9.2 inches
+Shipping Weight: 1.2 pounds (View shipping rates and policies)
+
+=== 5 ====
+Understanding the Linux Kernel, Third Edition 3rd Edition
+ISBN-13: 978-0596005658
+ISBN-10: 0596005652 
+ by Daniel P. Bovet (Author), Marco Cesati (Author)
+Paperback: 944 pages
+Publisher: O'Reilly Media; 3 edition (November 2005)
+Language: English
+ISBN-10: 0596005652
+ISBN-13: 978-0596005658
+Product Dimensions: 7 x 1.8 x 9.2 inches
+Shipping Weight: 3.3 pounds (View shipping rates and policies)
+
+
+ 
+=== 6 ====
+Unix Network Programming, Volume 1: The Sockets Networking API (3rd Edition) 3rd Edition
+by W. Richard Stevens (Author), Bill Fenner (Author), Andrew M. Rudoff (Author) 
+ ISBN-13: 978-0131411555
+ISBN-10: 0131411551 
+ Hardcover: 1024 pages
+Publisher: Addison-Wesley Professional; 3 edition (November 24, 2003)
+Language: English
+ISBN-10: 0131411551
+ISBN-13: 978-0131411555
+Product Dimensions: 7.2 x 1.5 x 9.4 inches 
+
+ 
+=== 7 ====
+The Linux Programming Interface: A Linux and UNIX System Programming Handbook 1st Edition
+by Michael Kerrisk (Author) 
+ ISBN-13: 978-1593272203
+ISBN-10: 1593272200 
+Hardcover: 1552 pages
+Publisher: No Starch Press; 1 edition (October 28, 2010)
+Language: English
+ISBN-10: 1593272200
+ISBN-13: 978-1593272203
+
+
+
+=== 8 ====
+The C++ Programming Language (hardcover) (4th Edition) 4th Edition
+by Bjarne Stroustrup (Author) 
+Hardcover: 1368 pages
+Publisher: Addison-Wesley Professional; 4 edition (August 3, 2013)
+Language: English
+ISBN-10: 0321958322
+ISBN-13: 978-0321958327
+Product Dimensions: 7.5 x 1.9 x 9.2 inches 
+
+
+
+=== 9 ====
+Essential C# 6.0 (5th Edition) (Addison-Wesley Microsoft Technology) 5th Edition
+by Mark Michaelis (Author), Eric Lippert (Author) 
+Series: Addison-Wesley Microsoft Technology
+Paperback: 1008 pages
+Publisher: Addison-Wesley Professional; 5 edition (October 4, 2015)
+Language: English
+ISBN-10: 0134141040
+ISBN-13: 978-0134141046
+Product Dimensions: 7 x 2.1 x 9.1 inches
+Shipping Weight: 3.4 pounds (View shipping rates and policies)
+
+
+
+=== 10 ====
+C# 6.0 and the .NET 4.6 Framework 7th ed. Edition
+by ANDREW TROELSEN (Author), Philip Japikse (Author) 
+Paperback: 1625 pages
+Publisher: Apress; 7th ed. edition (November 11, 2015)
+Language: English
+ISBN-10: 1484213335
+ISBN-13: 978-1484213339
+Product Dimensions: 10 x 7.1 x 2.4 inches
+Shipping Weight: 5.5 pounds (View shipping rates and policies)
+
+
+
+=== 11 ====
+C# 6.0 in a Nutshell: The Definitive Reference 6th Edition
+by Joseph Albahari (Author), Ben Albahari (Author) 
+Series: In a Nutshell
+Paperback: 1136 pages
+Publisher: O'Reilly Media; 6 edition (November 26, 2015)
+Language: English
+ISBN-10: 1491927062
+ISBN-13: 978-1491927069
+Product Dimensions: 6 x 2 x 9 inches
+Shipping Weight: 3 pounds (View shipping rates and policies)
+
+
+
+=== 12 ====
+Windows Internals, Part 1: System architecture, processes, threads, memory management, and more (7th Edition) 7th Edition
+by Pavel Yosifovich (Author), Mark E. Russinovich (Author), David A. Solomon (Author), Alex Ionescu (Author) 
+Paperback: 608 pages
+Publisher: Microsoft Press; 7 edition (February 12, 2017)
+Language: English
+ISBN-10: 0735684189
+ISBN-13: 978-0735684188
+Product Dimensions: 5.9 x 0.6 x 9.8 inches
+Shipping Weight: 2.2 pounds (View shipping rates and policies)
+
+
+=== 13 ====
+Professional Visual Studio 2015 1st Edition
+by Bruce Johnson (Author) 
+Paperback: 1320 pages
+Publisher: Wrox; 1 edition (September 8, 2015)
+Language: English
+ISBN-10: 1119068053
+ISBN-13: 978-1119068051
+Product Dimensions: 7.4 x 2.3 x 9.3 inches
+Shipping Weight: 4.8 pounds (View shipping rates and policies)
+
+
+=== 14 ====
+CompTIA Network+ All-In-One Exam Guide, Sixth Edition (Exam N10-006) 6th Edition
+by Mike Meyers (Author) 
+Series: All-in-One
+Hardcover: 872 pages
+Publisher: McGraw-Hill Education; 6 edition (May 18, 2015)
+Language: English
+ISBN-10: 0071848223
+ISBN-13: 978-0071848220
+Product Dimensions: 7.6 x 2 x 9.1 inches
+Shipping Weight: 3.5 pounds (View shipping rates and policies)
+
+
+
+=== 15 ====
+Linux Bible 9th Edition
+by Christopher Negus (Author) 
+Series: Bible
+Paperback: 912 pages
+Publisher: Wiley; 9 edition (April 27, 2015)
+Language: English
+ISBN-10: 1118999878
+ISBN-13: 978-1118999875
+Product Dimensions: 7.4 x 1.6 x 9.2 inches
+Shipping Weight: 3.2 pounds (View shipping rates and policies)
+
+
+=== 16 ====
+Cisco IOS Cookbook (Cookbooks (O'Reilly)) 2nd Edition
+by Kevin Dooley (Author), Ian Brown (Author) 
+Series: Cookbooks (O'Reilly)
+Paperback: 1192 pages
+Publisher: O'Reilly Media; 2 edition (January 1, 2007)
+Language: English
+ISBN-10: 0596527225
+ISBN-13: 978-0596527228
+Product Dimensions: 7 x 2.6 x 9.2 inches
+Shipping Weight: 3.8 pounds (View shipping rates and policies)
+
+
+=== 17 ====
+Fluent Python 1st Edition
+by Luciano Ramalho (Author) 
+Paperback: 792 pages
+Publisher: O'Reilly Media; 1 edition (August 20, 2015)
+Language: English
+ISBN-10: 1491946008
+ISBN-13: 978-1491946008
+Product Dimensions: 7 x 1.5 x 9.2 inches
+Shipping Weight: 2.8 pounds (View shipping rates and policies)
+
+
+
+
+

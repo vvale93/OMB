@@ -1,0 +1,194 @@
+/*
+
+	Tablas relacionadas con el modulo de SEGURIDAD
+
+*/
+
+create table Provincias
+(
+	ID_Provincia		nchar(1)		not null,
+	Provincia			nvarchar(40)	not null,
+	--
+	--	constraints
+	constraint PK_Provincias primary key (ID_Provincia)
+)
+
+select * from Provincias
+
+select * 
+delete from Provincias where ID_Provincia='1'
+
+
+create table Localidades
+(
+	ID_Localidad			int				identity (1, 1) not null,
+	Localidad				nvarchar(150)	not null,
+	CodigoPostal			nvarchar(20),
+	ID_Provincia			nchar(1)	not null,
+	--
+	--	constraints
+	constraint PK_Localidades primary key (ID_Localidad),
+	constraint FK_Localidades_Provincias foreign key (ID_Provincia) references Provincias (ID_Provincia)
+)
+
+select * from Localidades
+
+
+select * from Localidades where ID_Localidad=660
+
+select * from Localidades where ID_Provincia='1'
+
+delete from Localidades where ID_Provincia='1'
+	
+	
+select * from Localidades where Localidad like '%martin%'
+
+select * from Localidades where ID_Provincia = 'P'
+
+--
+--	Observaciones: se podria incorporar alguna expresion de validacion o un texto con que ayudar al ingreso del mismo
+--
+create table TiposDeDocumento
+(
+	ID_TipoDocumento		int			identity	not null,
+	Descripcion				nvarchar(50)			not null,
+	Observaciones			nvarchar(300),			
+	--
+	--
+	constraint PK_TiposDeDocumento primary key (ID_TipoDocumento)
+)
+
+select * from TiposDeDocumento
+
+
+create table TiposDeContacto
+(
+	ID_TipoContacto			int		identity		not null,
+	Descripcion				nvarchar(40)			not null,
+	Validacion				nvarchar(100),
+	--
+	--	constraints
+	constraint PK_TiposDeContacto primary key (ID_TipoContacto)
+)
+
+select * from TiposDeContacto
+
+
+--	drop table Personas
+create table Personas
+(
+    ID_Persona 						uniqueidentifier		not null,
+    Apellidos 						nvarchar(200),
+    Nombres 						nvarchar(200),
+    Domicilio						nvarchar(150),
+    AmpliacionDomicilio				nvarchar(150),
+    CodigoPostal					nvarchar(20),
+    Documento						nvarchar(15),
+    FechaNacimiento 				datetime,
+    Sexo 							int,
+    ID_Localidad					int,
+    ID_TipoDocumento				int,
+	--
+	--	constraints
+	--
+	constraint PK_Personas primary key (ID_Persona),
+    constraint FK_Personas_Localidades foreign key (ID_Localidad) references Localidades (ID_Localidad),
+    constraint FK_Personas_TiposDeDocumento foreign key (ID_TipoDocumento) references TiposDeDocumento (ID_TipoDocumento)
+);
+
+select * from Personas
+--	delete from Personas where ID_Persona <> '0c1df635-e79a-414b-bd21-b3ff3efd4965'
+
+
+create table Contactos
+(
+	ID_Contacto				int					not null identity (1, 1),
+	Dato					nvarchar(50)		not null,
+	Comentario				nvarchar(200),
+	ID_Persona				uniqueidentifier	not null,
+	ID_TipoContacto			int					not null,
+	--
+	--	constraints
+	--
+	constraint PK_Contactos primary key (ID_Contacto),
+	constraint FK_Contactos_Personas foreign key (ID_Persona) references Personas (ID_Persona), 
+	constraint FK_Contactos_TiposDeContacto foreign key (ID_TipoContacto) references TiposDeContacto (ID_TipoContacto) 
+)
+
+select * from Contactos
+
+--	delete from Contactos where ID_Contacto=8
+
+--
+--	Faltaria la Categoria del Empleado
+--
+create table Empleados
+(
+	Legajo				nvarchar(20)			not null,
+	CUIT				nvarchar(15),
+	FechaIngreso		datetime,
+	FechaEgreso			datetime,
+	ID_Persona			uniqueidentifier		not null,
+	--
+	--	constraints
+	--
+	constraint PK_Empleados primary key (Legajo),
+	constraint FK_Empleados_Personas foreign key (ID_Persona) references Personas (ID_Persona)
+)
+
+select * from Empleados
+
+create table Usuarios
+(
+	Login						nvarchar(20)	not null,
+	Password					nvarchar(100),
+	FechaExpiracionPassword		datetime,
+	FechaLastLoginOK			datetime,
+	FechaLastLoginBAD			datetime,
+	MustChangePassword			bit,
+	EnforceExpiration			bit,
+	EnforceStrong				bit,
+	Enabled						bit				not null,
+	Blocked						bit				not null,
+	Legajo						nvarchar(20)	not null,
+	--
+	--	constraints
+	constraint PK_Usuarios primary key (Login),
+	constraint FK_Usuarios_Empleados foreign key (Legajo) references Empleados (Legajo)
+)
+
+select * from Usuarios
+
+delete from Usuarios where Login = 'ethedy1'
+
+create table Perfiles
+(
+	ID_Perfil		int				identity 	not null,
+	Nombre			nvarchar(30)				not null,
+	Descripcion		nvarchar(200),
+	--
+	--	constraints
+	constraint PK_Perfiles primary key (ID_Perfil),
+	constraint UK_Perfiles unique (Nombre)
+)
+
+INSERT INTO Perfiles (Nombre, Descripcion) VALUES ('SysAdmin', 'Administracion total del Sistema');
+INSERT INTO Perfiles (Nombre, Descripcion) VALUES ('StockAdmin', 'Maneja el ingreso/egreso de productos al deposito');
+INSERT INTO Perfiles (Nombre, Descripcion) VALUES ('PDV', 'Atencion al cliente, facturacion, caja');
+INSERT INTO Perfiles (Nombre, Descripcion) VALUES ('AsistenciaCliente', 'Acceso a terminales de ayuda al cliente, busqueda de productos y precios');
+
+select * from perfiles
+
+create table Usuarios_Perfiles
+(
+	Login 			nvarchar(20)	not null,
+	ID_Perfil 		int				not null,
+	--
+	--	constraints
+	constraint PK_Usuarios_Perfiles primary key (Login, ID_Perfil),	--	con esto me aseguro que no podre incorporar dos veces el mismo perfil
+	constraint FK_Usuarios_Perfiles_Usuarios foreign key (Login) references Usuarios (Login),
+	constraint FK_Ususarios_Perfiles_Perfiles foreign key (ID_Perfil) references Perfiles (ID_Perfil)
+);
+
+
+

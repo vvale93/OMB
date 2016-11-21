@@ -1,0 +1,18 @@
+Algorithms in a Nutshell A Practical Guide.jpg
+C# 6.0 and the .NET 4.6 Framework.jpg
+C# 6.0 in a Nutshell The Definitive Reference.jpg
+Cisco IOS Cookbook.jpg
+CompTIA Network+ All-In-One Exam Guide.jpg
+Essential C# 6.0.jpg
+Fluent Python.jpg
+Introduction to Algorithms.jpg
+Linux Bible.jpg
+Nombres.txt
+Professional Visual Studio 2015.jpg
+The C++ Programming Language.jpg
+The C++ Standard Library A Tutorial and Reference.jpg
+The Hitchhiker's Guide to Python Best Practices for Development.jpg
+The Linux Programming Interface A Linux and UNIX System Programming Handbook.jpg
+Understanding the Linux Kernel.jpg
+Unix Network Programming, Volume 1 The Sockets Networking API.jpg
+Windows Internals, Part 1 System architecture, processes, threads, memory management, and more.jpg
