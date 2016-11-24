@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Entidades;
 
-namespace OMB_Desktop
+namespace OMB_Desktop.Views
 {
   /// <summary>
-  /// Interaction logic for MainWindow.xaml
+  /// Interaction logic for BookAdminView.xaml
   /// </summary>
-  public partial class MainWindow : Window
+  public partial class BookAdminView : UserControl
   {
-    public MainWindow()
+    public BookAdminView()
     {
       InitializeComponent();
-    }
-
-    private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
-    {
-      //this.DataContext = new MainWindowViewModel();
     }
   }
 }

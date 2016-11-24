@@ -1,8 +1,111 @@
-﻿<Window x:Class="OMB_Desktop.MainWindow"
+﻿<Window xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"  x:Class="OMB_Desktop.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Loaded="MainWindow_OnLoaded"
+        Title="Administracion de OMB" 
+        WindowStartupLocation="CenterScreen"
+        Height="700" Width="1100"
+        >
+
+  <Window.Resources>
+    <system:String x:Key="StatusNoConectado">Usuario no Conectado</system:String>
+    <system:String x:Key="StatusNoConectadoFall">Usuario no Conectado*</system:String>
+
+    <Style x:Key="StatusBar">
+      <Setter Property="Panel.Background" Value="LightSteelBlue"></Setter>
+      <Setter Property="Control.FontFamily" Value="Verdana"></Setter>
+      <Setter Property="Control.FontSize" Value="14"></Setter>
+      <Style.Resources>
+        <Style TargetType="TextBlock">
+         <Setter Property="Margin" Value="7, 5"></Setter>
+        </Style>
+      </Style.Resources>
+    </Style>
+
+    <Style x:Key="Botonera">
+      <Setter Property="Button.FontFamily" Value="Consolas"></Setter>
+      <Setter Property="Button.FontSize" Value="14"></Setter>
+      <Style.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" >
+          <Setter Property="Width" Value="100"></Setter>
+          <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="True">
+              <Setter Property="Background" Value="Coral"></Setter>
+            </Trigger>
+          </Style.Triggers>
+        </Style>
+      </Style.Resources>
+    </Style>
+
+    <Style x:Key="BotoneraBoton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+      <Setter Property="FontFamily" Value="Consolas"></Setter>
+      <Setter Property="FontSize" Value="14"></Setter>
+      <Setter Property="Width" Value="100"></Setter>
+      <Style.Triggers>
+        <Trigger Property="IsEnabled" Value="True">
+          <Setter Property="Background" Value="Coral"></Setter>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+
+  </Window.Resources>
+
+  <DockPanel LastChildFill="False">
+    <Grid DockPanel.Dock="Top" Background="Azure">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"></RowDefinition>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <StackPanel Grid.Column="0" Grid.Row="0"  FlowDirection="LeftToRight" Orientation="Horizontal" Style="{StaticResource Botonera}">
+        <Button Command="{Binding Login}">Login</Button>
+        <Button Command="{Binding Logout}">Logout</Button>
+        <Button Command="{Binding NullCommand}">Nuevo</Button>
+        <Button Command="{Binding NullCommand}">Lista</Button>
+      </StackPanel>
     </Grid>
+
+    <Grid DockPanel.Dock="Top" Background="Azure">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"></RowDefinition>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      
+      <TextBox Grid.Column="1" Grid.Row="0" Margin="10" Width="350" 
+               HorizontalAlignment="Right" VerticalContentAlignment="Center" 
+               Text="{Binding TextoBuscar, UpdateSourceTrigger=PropertyChanged}"/>
+      <Button Grid.Column="2" Grid.Row="0" Command="{Binding Buscar}" IsDefault="True">Buscar</Button>
+    </Grid>
+    
+    <ContentControl Name="mainContent">
+    </ContentControl>
+    
+    <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Style="{StaticResource StatusBar}">
+      <TextBlock DockPanel.Dock="Left" 
+                 Text="{Binding Status, TargetNullValue='Mensaje de Status', FallbackValue='Status*'}"></TextBlock>
+      <TextBlock DockPanel.Dock="Right">
+        <TextBlock.Text>
+          <MultiBinding TargetNullValue="{StaticResource StatusNoConectado}" 
+                        FallbackValue="{StaticResource StatusNoConectadoFall}" 
+                        StringFormat="{}{0} {1}">
+            <Binding Path="Usuario.Empleado.Persona.Nombres"></Binding>
+            <Binding Path="Usuario.Empleado.Persona.Apellidos"></Binding>
+          </MultiBinding>
+        </TextBlock.Text>
+      </TextBlock>
+    </DockPanel>
+  </DockPanel>
 </Window>

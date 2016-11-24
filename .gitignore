@@ -51,7 +51,8 @@ ipch/
 *.aps
 *.ncb
 *.opensdf
-*.sdf
+#   Para permitir compartir bases de datos SQL CE
+#   *.sdf
 *.cachefile
 
 # Visual Studio profiler
@@ -154,3 +155,4 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+/packages

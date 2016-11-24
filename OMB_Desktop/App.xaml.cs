@@ -9,9 +9,15 @@ using System.Windows;
 namespace OMB_Desktop
 {
   /// <summary>
-  /// Interaction logic for App.xaml
+  /// Logica general para el startup de la aplicacion
   /// </summary>
   public partial class App : Application
   {
+    public App()
+    {
+      //  aca seteo el service locator, como para que cualquier clase dentro de la app pueda utilizar el mismo contenedor
+      //
+      //  ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+    }
   }
 }

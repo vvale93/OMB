@@ -12,23 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Entidades;
+using OMB_Desktop.ViewModels;
 
-namespace OMB_Desktop
+namespace OMB_Desktop.Views
 {
-  /// <summary>
-  /// Interaction logic for MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : Window
+  public partial class LoginView : UserControl
   {
-    public MainWindow()
+    public LoginView()
     {
       InitializeComponent();
     }
 
-    private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+    //  tiene lugar cuando los controles del control se cargaron completamente
+    private void LoginViewLoaded(object sender, RoutedEventArgs e)
     {
-      //this.DataContext = new MainWindowViewModel();
+      //  Este uso de codebehind es inevitable
+      txtUsuario.Focus();
     }
   }
 }

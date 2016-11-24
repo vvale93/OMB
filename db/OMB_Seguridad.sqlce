@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 	Tablas relacionadas con el modulo de SEGURIDAD
 
@@ -189,6 +189,5 @@ create table Usuarios_Perfiles
 	constraint FK_Usuarios_Perfiles_Usuarios foreign key (Login) references Usuarios (Login),
 	constraint FK_Ususarios_Perfiles_Perfiles foreign key (ID_Perfil) references Perfiles (ID_Perfil)
 );
-
 
 
