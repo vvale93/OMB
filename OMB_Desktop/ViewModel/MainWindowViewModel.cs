@@ -1,7 +1,7 @@
-﻿using System;
+﻿//using System;
 using Entidades;
 using GalaSoft.MvvmLight;
-using OMB_Desktop.Common;
+//using OMB_Desktop.Common;
 using Prism.Interactivity.InteractionRequest;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -14,8 +14,8 @@ namespace OMB_Desktop.ViewModel
   /// [[VIEWMODEL]]
   /// Logica de la vista principal de la aplicacion
   /// </summary>
-  public class MainWindowViewModel : ViewModelBase
-  {
+  public class MainWindowViewModel : ViewModelBase     //ViewModelBase: implementa "inotifypropertychanged" y metodos
+    {
     public ICommand Login { get; set; }
 
     public ICommand Logout { get; set; }
@@ -47,10 +47,10 @@ namespace OMB_Desktop.ViewModel
 
     public string TextoBuscar
     {
-      get { return _buscar; }
+      get { return _buscar; } //devuelve el valor. 
       set
       {
-        Set(() => TextoBuscar, ref _buscar, value);
+        Set(() => TextoBuscar, ref _buscar, value); //  Set lanza el evento para la vista. "setea" TextoBuscar y luego 
       }
     }
 
@@ -72,12 +72,12 @@ namespace OMB_Desktop.ViewModel
 
       Login = new RelayCommand(() =>
       {
-        DisplayLogin.Raise(new Notification() { Title = "Ingreso al sistema" }, LoginTerminado);
+        DisplayLogin.Raise(new Notification() { Title = "Ingreso al sistema" }, LoginTerminado);// cuando termina llama a LoginTerminado(el cual chequea si la sesion es o no nula, si no lo es pone la variable login status en "LoginOK"
       }, CanLogin);
 
       Logout = new RelayCommand(() =>
       {
-        SecurityServices serv = new SecurityServices(null);
+        SecurityServices serv = new SecurityServices();
 
         serv.Logout();
         Usuario = null;
@@ -104,12 +104,13 @@ namespace OMB_Desktop.ViewModel
 
     private bool CanLogin()
     {
+            //si no hay usr devuelve null
       return Usuario == null;
     }
 
     private bool CanLogout()
     {
-      return Usuario != null;
+      return Usuario != null; // si hay usuario devuelve null 
     }
 
     /// <summary>
@@ -148,7 +149,7 @@ namespace OMB_Desktop.ViewModel
       if (OMBSesion.Current != null)
       {
         Status = "Login OK";
-        Usuario = OMBSesion.Current.Usuario;
+        Usuario = OMBSesion.Current.Usuario; //ombsesion definido en infraestructura
       }
     }
   }

@@ -7,13 +7,14 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Loaded="MainWindow_OnLoaded"
+     
         Title="Administracion de OMB" 
         WindowStartupLocation="CenterScreen"
         Height="700" Width="1100"
         >
-
-  <Window.Resources>
+    <!--Loaded="MainWindow_OnLoaded"-->
+    
+    <Window.Resources>
     <system:String x:Key="StatusNoConectado">Usuario no Conectado</system:String>
     <system:String x:Key="StatusNoConectadoFall">Usuario no Conectado*</system:String>
 
@@ -55,7 +56,7 @@
     </Style>
 
   </Window.Resources>
-
+    <!--elemento unico de "window", puede contener otros elementos-->
   <DockPanel LastChildFill="False">
     <Grid DockPanel.Dock="Top" Background="Azure">
       <Grid.RowDefinitions>
@@ -95,7 +96,7 @@
     
     <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Style="{StaticResource StatusBar}">
       <TextBlock DockPanel.Dock="Left" 
-                 Text="{Binding Status, TargetNullValue='Mensaje de Status', FallbackValue='Status*'}"></TextBlock>
+                 Text="{Binding Status, TargetNullValue='Mensaje de Status', FallbackValue='Status*'}"></TextBlock> <!--binding a la propiedad status del view model -->
       <TextBlock DockPanel.Dock="Right">
         <TextBlock.Text>
           <MultiBinding TargetNullValue="{StaticResource StatusNoConectado}" 
@@ -103,7 +104,7 @@
                         StringFormat="{}{0} {1}">
             <Binding Path="Usuario.Empleado.Persona.Nombres"></Binding>
             <Binding Path="Usuario.Empleado.Persona.Apellidos"></Binding>
-          </MultiBinding>
+          </MultiBinding> <!--cuando son necesarias mas de una propiedad-->
         </TextBlock.Text>
       </TextBlock>
     </DockPanel>

@@ -1,4 +1,5 @@
-﻿#define PASO_13
+﻿//ejecuta el "PASO" q se le indique
+#define PASO_13
 
 using System;
 using System.Collections.Generic;
