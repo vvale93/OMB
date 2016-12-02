@@ -70,10 +70,15 @@ namespace OMB_Desktop.ViewModel
     {
       DisplayLogin = new InteractionRequest<INotification>();
 
-      Login = new RelayCommand(() =>
+      Login = new RelayCommand(() => //RelayCommand es de MVVMLIte
       {
-        DisplayLogin.Raise(new Notification() { Title = "Ingreso al sistema" }, LoginTerminado);// cuando termina llama a LoginTerminado(el cual chequea si la sesion es o no nula, si no lo es pone la variable login status en "LoginOK"
-      }, CanLogin);
+        DisplayLogin.Raise(new Notification()
+        {
+            Title = "Ingreso al sistema",
+            Content = "PRUEBA"
+        },  LoginTerminado);// cuando termina llama a LoginTerminado(el cual chequea si la sesion es o no nula, si no lo es pone la variable login status en "LoginOK"
+      }, CanLogin); //interaccionrequest le dice al boton que muestre la ventana
+        
 
       Logout = new RelayCommand(() =>
       {

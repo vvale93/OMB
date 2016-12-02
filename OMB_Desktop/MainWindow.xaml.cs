@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Entidades;
-using OMB_Desktop.ViewModel;
+using OMB_Desktop.ViewModel; // para referenciar
 
 namespace OMB_Desktop
 {
@@ -24,9 +24,10 @@ namespace OMB_Desktop
   {
     public MainWindow()
     {
-      InitializeComponent();
-            //esto asocia la vista con el view, esto es una dependencia
-            this.DataContext = new MainWindowViewModel();
+        InitializeComponent();
+        //esto asocia la vista con el view model, esto es una dependencia (demasiado rigida) entre la vista y el view model mediante el new
+        //this.DataContext = new MainWindowViewModel();
+
     }
 
     //private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)

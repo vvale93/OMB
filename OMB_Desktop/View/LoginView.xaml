@@ -36,11 +36,13 @@
     </DockPanel>
     <DockPanel Margin="10, 0, 10, 10">
       <Label Width="80">Password</Label>
-      <TextBox Name="txtPassword" VerticalContentAlignment="Center" Foreground="{Binding ElementName=txtPassword, Path=Background}" ></TextBox>
+      <TextBox Name="txtPassword" VerticalContentAlignment="Center" 
+               Text ="{Binding Password}"
+               Foreground="{Binding ElementName=txtPassword, Path=Background}" ></TextBox> <!--Le estoy diciendo que elcolor de foreground es el mismo que el background de txtpassword-->
     </DockPanel>
     <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Margin="10">
-      <Button Padding="10" Style="{StaticResource BotonLogin}" Command="{Binding LoginCommand}" IsDefault="True"
-              CommandParameter="{Binding Text, ElementName=txtPassword}" >Login</Button>
+      <Button Padding="10" Style="{StaticResource BotonLogin}" Command="{Binding LoginCommand}" 
+              IsDefault="True" >Login</Button>
     </StackPanel>
   </StackPanel>
 </UserControl>

@@ -103,7 +103,7 @@ namespace Servicios
         usuario.LastSuccessLogin = DateTime.Now;
         ctx.SaveChanges();
 
-        OMBSesion.CreateNewSession(usuario);
+        OMBSesion.CreateNewSession(usuario); //es muy utilizado, siemrpre conviene guardar un sigletorn(?) con datos relevantes acerca de ese usuario conectado
         result = true;
       }
       else

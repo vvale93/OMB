@@ -10,7 +10,6 @@ using Entidades;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Infraestructura;
-using OMB_Desktop.Common;
 using Prism.Interactivity.InteractionRequest;
 using Servicios;
 
@@ -28,12 +27,19 @@ namespace OMB_Desktop.ViewModel
         Set(() => LoginID, ref _userid, value); 
       }
     }
+        private string _password; //campo soporte para la propiedad Password
+    public string Password
+    {
+        get { return _password; }
+        set { Set(() => Password, ref _password, value); } //Metodo Set q le dice a la vista q la prop cambio, (paso propiedad, referencia y valor)
+    }
 
-    public InteractionRequest<INotification> FaltanDatos { get; set; }
+
+        public InteractionRequest<INotification> FaltanDatos { get; set; }
 
     public InteractionRequest<INotification> CredencialesInvalidas { get; set; }
 
-    public RelayCommand<string> LoginCommand { get; set; }
+    public RelayCommand LoginCommand { get; set; }
 
     public INotification Notification { get; set; }
 
@@ -44,21 +50,21 @@ namespace OMB_Desktop.ViewModel
       //  LoginID = "---";
       //
       //  bindeamos comandos
-      LoginCommand = new RelayCommand<string>(DoLogin);
+      LoginCommand = new RelayCommand(DoLogin);
 
       FaltanDatos = new InteractionRequest<INotification>();
       CredencialesInvalidas = new InteractionRequest<INotification>();
     }
-
-    public void DoLogin(string pass)
+   
+    public void DoLogin()
     {
-      SecurityServices seg = new SecurityServices(new NullMailService());
+      SecurityServices seg = new SecurityServices(); //new NullMailService() serivicio que usamos para todo lo que tenga que ver con accesos, seguridad, etc
 
-      if (!string.IsNullOrWhiteSpace(pass))
+            if (!string.IsNullOrWhiteSpace(Password))
       {
-        Console.WriteLine(pass);
+        Console.WriteLine(Password);
 
-        if (seg.Login(LoginID, pass))
+        if (seg.Login(LoginID, Password) && !string.IsNullOrWhiteSpace(LoginID))
         {
           //  OMBSesion sesion = new OMBSesion(user);
 
@@ -88,3 +94,5 @@ namespace OMB_Desktop.ViewModel
     }
   }
 }
+
+

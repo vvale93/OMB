@@ -13,9 +13,9 @@
 */
 
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Ioc;           //generador de objetos, cuando yo te pida x, vos devolveme una instancia de eso. 
 using Microsoft.Practices.ServiceLocation;
-using OMB_Desktop.ViewModels;
+using OMB_Desktop.ViewModel;
 
 namespace OMB_Desktop.ViewModel
 {
@@ -30,8 +30,8 @@ namespace OMB_Desktop.ViewModel
     /// </summary>
     public ViewModelLocator()
     {
-      if (ViewModelBase.IsInDesignModeStatic)
-        ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+      if (ViewModelBase.IsInDesignModeStatic) //pregunta si esta en modo diseño, si esta hace lo siguiente relacion
+        ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default); //setea al simpleioc como contenedor de objetos
 
       ////if (ViewModelBase.IsInDesignModeStatic)
       ////{
@@ -44,21 +44,21 @@ namespace OMB_Desktop.ViewModel
       ////    SimpleIoc.Default.Register<IDataService, DataService>();
       ////}
 
-      SimpleIoc.Default.Register<MainWindowViewModel>();
-      SimpleIoc.Default.Register<LoginViewModel>();
-    }
+        SimpleIoc.Default.Register<MainWindowViewModel>();       //registra 
+        SimpleIoc.Default.Register<LoginViewModel>();
+     }
 
-    public MainWindowViewModel Main
+    public MainWindowViewModel Main //evita el uso de new, deriva la responsabilidad de crear objetos al IOC
     {
-      get { return ServiceLocator.Current.GetInstance<MainWindowViewModel>(); }
+      get { return ServiceLocator.Current.GetInstance<MainWindowViewModel>(); } //usa el registro para crear una instancia de MainW...Vmodel
     }
 
     public LoginViewModel Login
     {
-      get { return ServiceLocator.Current.GetInstance<LoginViewModel>(); }
+        get { return ServiceLocator.Current.GetInstance<LoginViewModel>(); }
     }
-        
-    public static void Cleanup()
+
+        public static void Cleanup()
     {
       // TODO Clear the ViewModels
     }

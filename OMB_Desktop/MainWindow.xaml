@@ -5,14 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:prism="http://prismlibrary.com/"
+        xmlns:views="clr-namespace:OMB_Desktop.Views"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
      
         Title="Administracion de OMB" 
         WindowStartupLocation="CenterScreen"
         Height="700" Width="1100"
+        DataContext="{Binding Main, Source ={StaticResource Locator}}"
         >
     <!--Loaded="MainWindow_OnLoaded"-->
+
+    <!-- se crea un InteractionRequest: para darle el "foco" a un objeto q lo llame-->
+    <i:Interaction.Triggers>        
+      <!--vamos a definir disparadores propios de prisma (trigger)-->
+        <prism:InteractionRequestTrigger SourceObject="{Binding DisplayLogin}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True">
+                <prism:PopupWindowAction.WindowStyle>
+                    <Style TargetType="Window">
+                        <Setter Property="Width" Value="350"></Setter>
+                        <Setter Property="Height" Value="200"></Setter>
+                        <Setter Property="ResizeMode" Value="NoResize"></Setter>
+                    </Style>
+                </prism:PopupWindowAction.WindowStyle>
+                <prism:PopupWindowAction.WindowContent>
+                    <views:LoginView></views:LoginView> <!--Asociamos la vista al popup-->
+                </prism:PopupWindowAction.WindowContent>
+            </prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
+
     
     <Window.Resources>
     <system:String x:Key="StatusNoConectado">Usuario no Conectado</system:String>
