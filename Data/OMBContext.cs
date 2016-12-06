@@ -41,6 +41,8 @@ namespace Data
 
     //  Agregamos libros y editoriales
 
+    public DbSet<Libro> Libros { get; set; }
+
     public DbSet<Editorial> Editoriales { get; set; }
 
     private StreamWriter writer;

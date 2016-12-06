@@ -72,7 +72,7 @@ namespace OMB_Desktop.ViewModel
 
       Login = new RelayCommand(() => //RelayCommand es de MVVMLIte
       {
-        DisplayLogin.Raise(new Notification()
+        DisplayLogin.Raise(new Notification() //esto es un iteraction request, nos muestra la ventanita login
         {
             Title = "Ingreso al sistema",
             Content = "PRUEBA"
@@ -149,7 +149,7 @@ namespace OMB_Desktop.ViewModel
       }
     }
 
-    private void LoginTerminado(INotification notification)
+    private void LoginTerminado(INotification notification) //testigo de que la interaccion termino
     {
       if (OMBSesion.Current != null)
       {

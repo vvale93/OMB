@@ -8,41 +8,47 @@
              xmlns:local="clr-namespace:OMB_Desktop.Views"
              xmlns:viewModel="clr-namespace:OMB_Desktop.ViewModel"
              mc:Ignorable="d" 
-             Loaded="LoginViewLoaded"
+             Loaded="LoginViewLoaded" 
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Login, Source={StaticResource Locator}}"
              >
-  <UserControl.Resources>
-    <Style x:Key="BotonLogin" TargetType="{x:Type Button}">
-      <Setter Property="FontWeight" Value="Bold"></Setter>
-      <Setter Property="Width" Value="120"></Setter>
-    </Style>
-  </UserControl.Resources>
-  
-  <i:Interaction.Triggers>
-    <prism:InteractionRequestTrigger SourceObject="{Binding FaltanDatos}">
-      <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"></prism:PopupWindowAction>
-    </prism:InteractionRequestTrigger>
+    <UserControl.Resources>
+        <Style x:Key="BotonLogin" TargetType="{x:Type Button}">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="Width" Value="120"></Setter>
+        </Style>
+    </UserControl.Resources>
 
-    <prism:InteractionRequestTrigger SourceObject="{Binding CredencialesInvalidas}">
-      <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"></prism:PopupWindowAction>
-    </prism:InteractionRequestTrigger>
-  </i:Interaction.Triggers>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <!-- Es el mismo evento que el de la linea 11 ( Loaded="LoginViewLoaded" )-->
+            <i:InvokeCommandAction Command="{Binding BorrarEntradas}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+        <prism:InteractionRequestTrigger SourceObject="{Binding FaltanDatos}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"></prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
 
-  <StackPanel Margin="10">
-    <DockPanel Margin="10">
-      <Label Width="80">Usuario</Label>
-      <TextBox Name="txtUsuario" Text="{Binding LoginID}" VerticalContentAlignment="Center"></TextBox>
-    </DockPanel>
-    <DockPanel Margin="10, 0, 10, 10">
-      <Label Width="80">Password</Label>
-      <TextBox Name="txtPassword" VerticalContentAlignment="Center" 
-               Text ="{Binding Password}"
-               Foreground="{Binding ElementName=txtPassword, Path=Background}" ></TextBox> <!--Le estoy diciendo que elcolor de foreground es el mismo que el background de txtpassword-->
-    </DockPanel>
-    <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Margin="10">
-      <Button Padding="10" Style="{StaticResource BotonLogin}" Command="{Binding LoginCommand}" 
+        <prism:InteractionRequestTrigger SourceObject="{Binding CredencialesInvalidas}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"></prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
+
+    <StackPanel Margin="10">
+        <DockPanel Margin="10">
+            <Label Width="80">Usuario</Label>
+            <TextBox Name="txtUsuario" Text="{Binding LoginID, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center"></TextBox>
+        </DockPanel>
+        <DockPanel Margin="10, 0, 10, 10">
+            <Label Width="80">Password</Label>
+            <TextBox Name="txtPassword" VerticalContentAlignment="Center" 
+               Text ="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
+               Foreground="{Binding ElementName=txtPassword, Path=Background}" ></TextBox>
+            <!--Le estoy diciendo que elcolor de foreground es el mismo que el background de txtpassword-->
+        </DockPanel>
+        <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Margin="10">
+            <Button Padding="10" Style="{StaticResource BotonLogin}" 
+              Command="{Binding LoginCommand}" 
               IsDefault="True" >Login</Button>
+        </StackPanel>
     </StackPanel>
-  </StackPanel>
 </UserControl>

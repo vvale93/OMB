@@ -16,18 +16,18 @@ using OMB_Desktop.ViewModel;
 
 namespace OMB_Desktop.Views
 {
-  public partial class LoginView : UserControl
-  {
-    public LoginView()
+    public partial class LoginView : UserControl
     {
-      InitializeComponent();
-    }
+        public LoginView()
+        {
+            InitializeComponent();
+        }
 
-    //  tiene lugar cuando los controles del control se cargaron completamente
-    private void LoginViewLoaded(object sender, RoutedEventArgs e)
-    {
-      //  Este uso de codebehind es inevitable
-      txtUsuario.Focus(); //esto hac eque el cursor se aparezca en el txt usuario. 
+        //  tiene lugar cuando los controles del control se cargaron completamente
+        private void LoginViewLoaded(object sender, RoutedEventArgs e)
+        {
+            //  Este uso de codebehind es inevitable
+            txtUsuario.Focus(); //esto hac eque el cursor se aparezca en el txt usuario. 
+        }
     }
-  }
 }
